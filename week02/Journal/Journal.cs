@@ -48,7 +48,7 @@ public class Journal
             loadedEntry._promptText = parts[1].Trim('"');
             loadedEntry._entryText = parts[2].Trim('"');
 
-            _entries.Add(loadedEntry);
+            AddEntry(loadedEntry);
         }
     }
 }

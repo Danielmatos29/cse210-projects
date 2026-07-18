@@ -35,7 +35,7 @@ class Program
                 DateTime theCurrentTime = DateTime.Now;
 
                 myEntry._date = theCurrentTime.ToShortDateString();
-                myJournal._entries.Add(myEntry);
+                myJournal.AddEntry(myEntry);
             }
             else if (option == 2)
             {
