@@ -1,37 +1,57 @@
 using System;
-
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.");
-
-        List <string> prompts = ["If I had one thing I could do over today, what would it be? ",
-            "What was the best part of your day? ",
-            "What was the best meal you ate today? "];
+        Journal myJournal = new Journal();
+        PromptGenerator prompt = new PromptGenerator();
 
         int option = 0;
+
         while (option != 5)
         {
-            int promptIndex = 0; 
-            Console.WriteLine("Please select one of the following choioces: ");
+            Console.WriteLine("Please select one of the following choices: ");
+
             Console.WriteLine("""
-                1. Write
-                2. Display
-                3. Load
-                4. Save
-                5. Quit
+            1. Write
+            2. Display
+            3. Load
+            4. Save
+            5. Quit
+            What would you like to do? 
             """);
-            
-            Console.Write("What would you like to do? ");
+
             option = int.Parse(Console.ReadLine());
 
             if (option == 1)
             {
-                promptIndex = promptIndex + 1;
+                Entry myEntry = new Entry();
+                
+                myEntry._promptText = prompt.GetRandomPrompt();
+                Console.WriteLine(myEntry._promptText);
+                
+                myEntry._entryText = Console.ReadLine();
+                DateTime theCurrentTime = DateTime.Now;
 
-                Console.Write(prompts[promptIndex]);
-                Console.ReadLine();
+                myEntry._date = theCurrentTime.ToShortDateString();
+                myJournal._entries.Add(myEntry);
+            }
+            else if (option == 2)
+            {
+                myJournal.DisplayAll();
+            }
+            else if (option == 3)
+            {
+                Console.WriteLine("What is the file name? ");
+                string filename = Console.ReadLine();
+                myJournal.LoadFromFile(filename);
+            }
+            else if (option == 4)
+            {
+                Console.WriteLine("What is the file name? ");
+                string filename = Console.ReadLine();
+
+                myJournal.SaveToFile(filename);
             }
         }
     }
