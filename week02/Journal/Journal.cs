@@ -1,6 +1,9 @@
+// Improve the process of saving and loading to save as a .csv file that could be opened in Excel (make sure to account for quotation marks and commas correctly in your content.
+
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq.Expressions;
 
 public class Journal
 {
@@ -32,11 +35,20 @@ public class Journal
 
     public void LoadFromFile(string file)
     {
+        _entries.Clear();
         string [] lines = File.ReadAllLines(file);
 
         foreach (string line in lines)
         {
-            Console.WriteLine($"{line}\n");
+            string[] parts = line.Split(",");
+
+            Entry loadedEntry = new Entry();
+
+            loadedEntry._date = parts[0].Trim('"');
+            loadedEntry._promptText = parts[1].Trim('"');
+            loadedEntry._entryText = parts[2].Trim('"');
+
+            _entries.Add(loadedEntry);
         }
     }
 }

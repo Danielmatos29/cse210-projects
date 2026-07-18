@@ -1,3 +1,4 @@
+// Improve the process of saving and loading to save as a .csv file that could be opened in Excel (make sure to account for quotation marks and commas correctly in your content.
 using System;
 class Program
 {
@@ -26,7 +27,7 @@ class Program
             if (option == 1)
             {
                 Entry myEntry = new Entry();
-                
+
                 myEntry._promptText = prompt.GetRandomPrompt();
                 Console.WriteLine(myEntry._promptText);
                 
