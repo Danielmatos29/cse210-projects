@@ -11,17 +11,17 @@ public abstract class Goal
         _points = points;
     }
 
-    public string getShortName()
+    public string GetShortName()
     {
         return _shortName;
     }
 
-    public string getDescription()
+    public string GetDescription()
     {
         return _description;
     }
 
-    public int getPoints()
+    public int GetPoints()
     {
         return int.Parse(_points);
     }

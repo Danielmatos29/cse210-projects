@@ -9,7 +9,7 @@ public class SimpleGoal : Goal
         
     }
 
-    public void setChecking(bool checkComplete)
+    public void SetChecking(bool checkComplete)
     {
         _isComplete = checkComplete;
     }
@@ -18,7 +18,7 @@ public class SimpleGoal : Goal
     {
         if (_isComplete == true)
         {
-            Console.WriteLine($"Congratulations you have earned {getPoints()}");
+            Console.WriteLine($"Congratulations you have earned {GetPoints()}");
         }
     }
 
@@ -33,14 +33,14 @@ public class SimpleGoal : Goal
         if (IsComplete() == true)
         {
             completionCheck = "[X]";
-            return $"{completionCheck} {getShortName()} ({getDescription()})";
+            return $"{completionCheck} {GetShortName()} ({GetDescription()})";
         }
         
-        return $"{completionCheck} {getShortName()} ({getDescription()})";
+        return $"{completionCheck} {GetShortName()} ({GetDescription()})";
     }
 
     public override string GetStringRepresentation()
     {
-        return $"SimpleGoal:{getShortName()},{getDescription()},{getPoints()},{IsComplete()}";
+        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{IsComplete()}";
     }
 }

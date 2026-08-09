@@ -7,7 +7,7 @@ public class GoalManager
     private List<Goal> _goals = new List<Goal>();
     private double _score = 0;
     private int _currentLevel = 0;
-
+    private double _scoreToLevelUp = 100;
     public GoalManager()
     {
         
@@ -74,13 +74,12 @@ public class GoalManager
 
     public void LevelSystem()
     {
-        double scoreToLevelUp = 100;
         double experienceNeeded = 1.5;
 
-        while (_score >= scoreToLevelUp)
+        while (_score >= _scoreToLevelUp)
         {
             _currentLevel ++;
-            scoreToLevelUp = scoreToLevelUp * experienceNeeded;
+            _scoreToLevelUp += _scoreToLevelUp * experienceNeeded;
         }
     }
 
@@ -164,7 +163,7 @@ public class GoalManager
         int index = 1;
         foreach (Goal goal in _goals)
         {
-            Console.WriteLine($"{index} - {goal.getShortName()}");
+            Console.WriteLine($"{index} - {goal.GetShortName()}");
             index++;
         }
         Console.WriteLine();
@@ -194,11 +193,11 @@ public class GoalManager
 
         if (_goals[goal] is SimpleGoal simpleGoal)
         {
-            simpleGoal.setChecking(true);
+            simpleGoal.SetChecking(true);
 
             simpleGoal.RecordEvent();
 
-            _score += simpleGoal.getPoints();
+            _score += simpleGoal.GetPoints();
             LevelSystem();
 
             Console.WriteLine();
@@ -208,12 +207,12 @@ public class GoalManager
         {
             CheckList.RecordEvent();
 
-            _score += CheckList.getPoints();
+            _score += CheckList.GetPoints();
             LevelSystem();
 
             if (CheckList.IsComplete() == true)
             {
-                _score += CheckList.getBonus();
+                _score += CheckList.GetBonus();
             }
 
             Console.WriteLine();
@@ -223,7 +222,7 @@ public class GoalManager
         {
             _goals[goal].RecordEvent();
 
-            _score += _goals[goal].getPoints();
+            _score += _goals[goal].GetPoints();
             LevelSystem();
 
             Console.WriteLine();
@@ -281,7 +280,7 @@ public class GoalManager
                 bool isComplete = bool.Parse(details[3]);
 
                 SimpleGoal simpleGoal = new SimpleGoal(name, description, points);
-                simpleGoal.setChecking(isComplete);
+                simpleGoal.SetChecking(isComplete);
                 _goals.Add(simpleGoal);
             }
             else if (goalType == "EternalGoal")

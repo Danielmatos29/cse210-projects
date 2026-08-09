@@ -13,12 +13,12 @@ public class CheckList : Goal
         _bonus = bonus;
     } 
 
-    public int getTarget()
+    public int GetTarget()
     {
         return _target;
     }
 
-    public void setBonus(int bonus)
+    public void SetBonus(int bonus)
     {
         _bonus = bonus;
     }
@@ -27,7 +27,7 @@ public class CheckList : Goal
     {
         _amountCompleted = amount;
     }
-    public int getBonus()
+    public int GetBonus()
     {
         return _bonus;
     }
@@ -46,7 +46,7 @@ public class CheckList : Goal
     {
         _amountCompleted += 1;
 
-        Console.WriteLine($"Congratulations you have earned {getPoints()}");
+        Console.WriteLine($"Congratulations you have earned {GetPoints()}");
     }
 
     public override string GetDetailsString()
@@ -55,14 +55,14 @@ public class CheckList : Goal
         if (IsComplete() == true)
         {
             completionCheck = "[X]";
-            return $"{completionCheck} {getShortName()} ({getDescription()}) -- Currently completed {_amountCompleted}/{getTarget()}";
+            return $"{completionCheck} {GetShortName()} ({GetDescription()}) -- Currently completed {_amountCompleted}/{GetTarget()}";
         }
         
-        return $"{completionCheck} {getShortName()} ({getDescription()}) -- Currently completed {_amountCompleted}/{getTarget()}";
+        return $"{completionCheck} {GetShortName()} ({GetDescription()}) -- Currently completed {_amountCompleted}/{GetTarget()}";
     }
 
     public override string GetStringRepresentation()
     {
-        return $"CheckList:{getShortName()},{getDescription()},{getPoints()},{_bonus},{_amountCompleted},{_target}";
+        return $"CheckList:{GetShortName()},{GetDescription()},{GetPoints()},{_bonus},{_amountCompleted},{_target}";
     }
 }
