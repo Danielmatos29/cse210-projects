@@ -201,22 +201,20 @@ public class GoalManager
             LevelSystem();
 
             Console.WriteLine();
-            DisplayPlayerInfo();
         }
-        else if (_goals[goal] is CheckList CheckList)
+        else if (_goals[goal] is CheckList checkList)
         {
-            CheckList.RecordEvent();
+            checkList.RecordEvent();
 
-            _score += CheckList.GetPoints();
+            _score += checkList.GetPoints();
             LevelSystem();
 
-            if (CheckList.IsComplete() == true)
+            if (checkList.IsComplete() == true)
             {
-                _score += CheckList.GetBonus();
+                _score += checkList.GetBonus();
             }
 
             Console.WriteLine();
-            DisplayPlayerInfo();
         }
         else
         {
@@ -226,7 +224,6 @@ public class GoalManager
             LevelSystem();
 
             Console.WriteLine();
-            DisplayPlayerInfo();
         }
     }
 
