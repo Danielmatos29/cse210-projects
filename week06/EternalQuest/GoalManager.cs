@@ -204,16 +204,16 @@ public class GoalManager
             Console.WriteLine();
             DisplayPlayerInfo();
         }
-        else if (_goals[goal] is CheckList checkListGoal)
+        else if (_goals[goal] is CheckList CheckList)
         {
-            checkListGoal.RecordEvent();
+            CheckList.RecordEvent();
 
-            _score += checkListGoal.getPoints();
+            _score += CheckList.getPoints();
             LevelSystem();
 
-            if (checkListGoal.IsComplete() == true)
+            if (CheckList.IsComplete() == true)
             {
-                _score += checkListGoal.getBonus();
+                _score += CheckList.getBonus();
             }
 
             Console.WriteLine();
@@ -293,7 +293,7 @@ public class GoalManager
                 EternalGoal eternalGoal = new EternalGoal(name, description, points);
                 _goals.Add(eternalGoal);
             }
-            else if (goalType == "ChecklistGoal")
+            else if (goalType == "CheckList")
             {
                 string name = details[0];
                 string description = details[1];
@@ -302,10 +302,10 @@ public class GoalManager
                 int target = int.Parse(details[5]);
                 int amountCompleted = int.Parse(details[4]);
 
-                CheckList checkListGoal = new CheckList(name, description, points, target, bonus);
-                checkListGoal.SetAmountCompleted(amountCompleted);
+                CheckList CheckList = new CheckList(name, description, points, target, bonus);
+                CheckList.SetAmountCompleted(amountCompleted);
 
-                _goals.Add(checkListGoal);
+                _goals.Add(CheckList);
             }
         }
     }
