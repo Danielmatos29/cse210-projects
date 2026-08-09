@@ -67,9 +67,9 @@ public class GoalManager
 
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"You now have {_score} points!\n");
+        Console.WriteLine($"You now have {_score} points!");
 
-        Console.WriteLine($"Your current level is {_currentLevel}");
+        Console.WriteLine($"Your current level is {_currentLevel}\n");
     }
 
     public void LevelSystem()
@@ -167,7 +167,6 @@ public class GoalManager
             index++;
         }
         Console.WriteLine();
-        DisplayPlayerInfo();
     }
 
     public void ListGoalDetails()
@@ -201,6 +200,7 @@ public class GoalManager
             LevelSystem();
 
             Console.WriteLine();
+            DisplayPlayerInfo();
         }
         else if (_goals[goal] is CheckList checkList)
         {
@@ -215,6 +215,7 @@ public class GoalManager
             }
 
             Console.WriteLine();
+            DisplayPlayerInfo();
         }
         else
         {
@@ -224,6 +225,7 @@ public class GoalManager
             LevelSystem();
 
             Console.WriteLine();
+            DisplayPlayerInfo();
         }
     }
 
